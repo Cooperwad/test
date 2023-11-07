@@ -1,4 +1,4 @@
-package org.example;
+package sample;
 import org.jsoup.*;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
