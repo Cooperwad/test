@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("welcome to job search application");
         System.out.println("Enter job title: ");
         String jobTitle = sc.nextLine();
         System.out.println("Enter location: ");
