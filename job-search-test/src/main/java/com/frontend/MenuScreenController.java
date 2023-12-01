@@ -3,10 +3,14 @@ package com.frontend;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class MenuScreenController {
 
@@ -18,8 +22,9 @@ public class MenuScreenController {
     void logout(ActionEvent event) {
 
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("LoginScreen.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            URL url = new File("job-search-test\\src\\main\\java\\com\\frontend\\resources\\LoginScreen.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
+            Scene scene = new Scene(root, 600, 400);
             Stage thisStage = (Stage) logoutBtn.getScene().getWindow();
             thisStage.setTitle("Login Screen");
             thisStage.setScene(scene);

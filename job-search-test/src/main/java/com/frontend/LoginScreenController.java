@@ -3,12 +3,16 @@ package com.frontend;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class LoginScreenController {
 
@@ -30,8 +34,9 @@ public class LoginScreenController {
     @FXML
     void createAccount(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("AccountCreationScreen.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            URL url = new File("job-search-test\\src\\main\\java\\com\\frontend\\resources\\AccountCreationScreen.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
+            Scene scene = new Scene(root, 600, 400);
             Stage thisStage = (Stage) accountCreationBtn.getScene().getWindow();
             thisStage.setTitle("Account Creation");
             thisStage.setScene(scene);
@@ -53,8 +58,9 @@ public class LoginScreenController {
 
                 // Switch to the menu screen if credentials are valid
                 try {
-                    FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MenuScreen.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+                    URL url = new File("job-search-test\\src\\main\\java\\com\\frontend\\resources\\MenuScreen.fxml").toURI().toURL();
+                    Parent root = FXMLLoader.load(url);
+                    Scene scene = new Scene(root, 600, 400);
                     Stage thisStage = (Stage) loginBtn.getScene().getWindow();
                     thisStage.setTitle("Menu");
                     thisStage.setScene(scene);
