@@ -1,4 +1,5 @@
-package sample;
+package com.backend;
+
 import java.io.IOException;
 import java.util.Scanner;
 

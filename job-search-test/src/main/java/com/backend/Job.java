@@ -1,6 +1,6 @@
-package sample;
+package com.backend;
 
-public class Job implements interfaces.Job {
+public class Job implements com.backend.interfaces.Job {
 
     private String title;
     private String company;

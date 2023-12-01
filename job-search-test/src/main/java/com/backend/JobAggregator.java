@@ -1,4 +1,4 @@
-package sample;
+package com.backend;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -9,10 +9,8 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
-public class JobAggregator implements interfaces.JobAggregator {
+public class JobAggregator implements com.backend.interfaces.JobAggregator {
 
     private ArrayList<Job> jobList = new ArrayList<>();
     private String jobTitle;
