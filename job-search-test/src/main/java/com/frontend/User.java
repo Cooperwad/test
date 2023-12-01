@@ -1,6 +1,7 @@
 package com.frontend;
 
 
+
 public class User {
 
     private String username;
