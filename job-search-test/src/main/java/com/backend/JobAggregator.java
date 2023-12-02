@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 
 public class JobAggregator implements com.backend.interfaces.JobAggregator {
 
@@ -63,7 +64,29 @@ public class JobAggregator implements com.backend.interfaces.JobAggregator {
     }
 
     @Override
-    public void getRecommendedJobs() {
+    public ArrayList<Job> getRecommendedJobs(Profile userProfile) {
+        ArrayList<Job> recommendedJobs = new ArrayList<>();
 
+        List<String> combinedCriteria = new ArrayList<>();
+        combinedCriteria.addAll(userProfile.getSkills());
+        if (userProfile.getSkills() != null) {
+            combinedCriteria.addAll(userProfile.getSkills());
+        }
+        if (userProfile.getWorkExperience() != null) {
+            combinedCriteria.addAll(userProfile.getWorkExperience());
+        }
+
+        combinedCriteria.replaceAll(String::toLowerCase);
+
+        for (Job job : jobList) {
+            for (String criteria : combinedCriteria) {
+                if (job.getTitle().toLowerCase().contains(criteria) || job.getCompany().toLowerCase().contains(criteria)) {
+                    recommendedJobs.add(job);
+                }
+            }
+
+        }
+
+        return recommendedJobs;
     }
 }

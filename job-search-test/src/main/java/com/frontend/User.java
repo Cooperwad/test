@@ -1,6 +1,7 @@
 package com.frontend;
 
 
+import com.backend.Profile;
 
 public class User {
 
@@ -9,6 +10,8 @@ public class User {
     private String password;
 
     private String email;
+
+    private Profile userProfile;
 
 
     public String getUsername() {
@@ -35,11 +38,20 @@ public class User {
         this.email = email;
     }
 
+    public Profile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(Profile userProfile) {
+        this.userProfile = userProfile;
+    }
+
 
     public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.userProfile = new Profile();
     }
 
 

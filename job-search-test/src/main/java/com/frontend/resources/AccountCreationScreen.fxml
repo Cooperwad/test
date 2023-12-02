@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.AccountCreationScreenController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.frontend.AccountCreationScreenController">
    <children>
       <Text layoutX="220.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create your account">
          <font>
@@ -27,5 +27,6 @@
       <Text fx:id="passwordErrorTxt" fill="#e42424" layoutX="421.0" layoutY="217.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Password must be at least 6 characters" wrappingWidth="159.85546875" />
       <Text fx:id="confPasswordErrorTxt" fill="#e42424" layoutX="421.0" layoutY="271.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Passwords don't match" />
       <Button fx:id="backBtn" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#backToLogin" text="Back" />
+      <Button fx:id="resumeUploadButton" layoutX="245.0" layoutY="360.0" mnemonicParsing="false" text="Upload Resume" />
    </children>
 </AnchorPane>

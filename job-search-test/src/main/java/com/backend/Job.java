@@ -15,6 +15,22 @@ public class Job implements com.backend.interfaces.Job {
         this.date = date;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
     @Override
     public void favorite() {
 

@@ -1,5 +1,7 @@
 package com.frontend;
 
+import com.backend.Profile;
+import com.backend.ResumeParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,11 +10,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.apache.tika.exception.TikaException;
+import org.xml.sax.SAXException;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 
 public class AccountCreationScreenController {
 
@@ -36,6 +42,9 @@ public class AccountCreationScreenController {
     private TextField passwordTxtField;
     @FXML
     private Text usernameErrorTxt;
+
+    @FXML
+    private Button resumeUploadButton;
 
     // Reference to UserList to manage user data
     private UserList userList;
@@ -144,10 +153,52 @@ public class AccountCreationScreenController {
             }
         }
     }
+    private void handleFileUpload() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Upload Resume");
 
+        File file = fileChooser.showOpenDialog(resumeUploadButton.getScene().getWindow());
+
+        if (file != null) {
+            processSelectedFile(file);
+        }
+    }
+
+    private void processSelectedFile(File file) {
+        try {
+            byte[] resumeData = Files.readAllBytes(file.toPath());
+            ResumeParser resumeParser = new ResumeParser();
+            String resumeText = resumeParser.parseResume(resumeData);
+
+            String extractedEmail = resumeParser.extractEmail(resumeText);
+            String extractedName = resumeParser.extractName(resumeText);
+
+            // splits name into first and last name
+            String[] nameParts = extractedName != null ? extractedName.split("\\s+", 2) : new String[0];
+            String firstName = nameParts.length > 0 ? nameParts[0] : "";
+            String lastName = nameParts.length > 1 ? nameParts[1] : "";
+
+            // create a profile with the extracted information
+            Profile userProfile = new Profile();
+            userProfile.setFirstName(firstName);
+            userProfile.setLastName(lastName);
+            userProfile.setEmail(extractedEmail);
+            userProfile.setResume(resumeData);
+
+            usernameTxtField.setText(firstName + lastName);
+            emailTxtField.setText(extractedEmail);
+
+
+        } catch(IOException | TikaException | SAXException e) {
+            e.printStackTrace();
+        }
+
+    }
     // Initializes the controller when the FXML file is loaded, creating a new UserList instance to
     // manage user data during account creation.
     public void initialize() {
         userList = new UserList();
+        resumeUploadButton.setOnAction(event -> handleFileUpload());
     }
+
 }

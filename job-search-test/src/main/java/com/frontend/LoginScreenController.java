@@ -34,7 +34,7 @@ public class LoginScreenController {
     @FXML
     void createAccount(ActionEvent event) {
         try {
-            URL url = new File("job-search-test\\src\\main\\java\\com\\frontend\\resources\\AccountCreationScreen.fxml").toURI().toURL();
+            URL url = getClass().getResource("/com/frontend/resources/AccountCreationScreen.fxml");
             Parent root = FXMLLoader.load(url);
             Scene scene = new Scene(root, 600, 400);
             Stage thisStage = (Stage) accountCreationBtn.getScene().getWindow();
@@ -57,8 +57,7 @@ public class LoginScreenController {
                 isCredentialsValid = true;
 
                 // Switch to the menu screen if credentials are valid
-                try {
-                    URL url = new File("job-search-test\\src\\main\\java\\com\\frontend\\resources\\MenuScreen.fxml").toURI().toURL();
+                try {URL url = getClass().getResource("/com/frontend/resources/MenuScreen.fxml");
                     Parent root = FXMLLoader.load(url);
                     Scene scene = new Scene(root, 600, 400);
                     Stage thisStage = (Stage) loginBtn.getScene().getWindow();
