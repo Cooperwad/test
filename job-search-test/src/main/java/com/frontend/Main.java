@@ -13,8 +13,7 @@ import java.net.URL;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        URL url = new File("job-search-test\\src\\main\\java\\com\\frontend\\resources\\LoginScreen.fxml").toURI().toURL();
-        Parent root = FXMLLoader.load(url);
+        Parent root = FXMLLoader.load(getClass().getResource("/com/frontend/resources/LoginScreen.fxml"));
         Scene scene = new Scene(root, 600, 400);
         stage.setTitle("Login Screen");
         stage.setScene(scene);
