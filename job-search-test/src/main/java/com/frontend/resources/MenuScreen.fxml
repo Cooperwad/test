@@ -23,5 +23,11 @@
          </children>
       </VBox>
       <Button fx:id="logoutBtn" layoutX="520.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" text="Logout" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10" />
+      <VBox layoutX="351.0" layoutY="81.0" prefHeight="237.0" prefWidth="150.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="     Jobs recommended for you" wrappingWidth="196.10546875" />
+            <ListView fx:id="recommendedJobsListview" prefHeight="114.0" prefWidth="226.0" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
